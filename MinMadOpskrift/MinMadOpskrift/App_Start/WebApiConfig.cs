@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace MinMadOpskrift
 {
@@ -12,6 +13,11 @@ namespace MinMadOpskrift
             // Web API configuration and services
 
             // Web API routes
+
+            config.EnableCors();
+
+            config.EnableCors(new EnableCorsAttribute("http://localhost:4200", headers: "*", methods: "*"));
+
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(

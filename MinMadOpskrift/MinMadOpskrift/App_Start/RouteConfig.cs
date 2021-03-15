@@ -18,6 +18,11 @@ namespace MinMadOpskrift
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "Opskrift",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Opskrift", action = "Index", id = UrlParameter.Optional }
+            );
         }
     }
 }

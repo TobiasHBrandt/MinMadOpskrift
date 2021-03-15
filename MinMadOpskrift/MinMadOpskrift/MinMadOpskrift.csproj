@@ -266,7 +266,7 @@
     </Compile>
     <Compile Include="Controllers\BrugerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\OpskriftController.cs" />
+    <Compile Include="Controllers\OpskriftsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -356,6 +356,11 @@
     <Content Include="Views\Opskrift\Details.cshtml" />
     <Content Include="Views\Opskrift\Edit.cshtml" />
     <Content Include="Views\Opskrift\Index.cshtml" />
+    <Content Include="Views\Opskrifts\Create.cshtml" />
+    <Content Include="Views\Opskrifts\Delete.cshtml" />
+    <Content Include="Views\Opskrifts\Details.cshtml" />
+    <Content Include="Views\Opskrifts\Edit.cshtml" />
+    <Content Include="Views\Opskrifts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

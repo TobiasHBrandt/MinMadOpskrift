@@ -10,6 +10,7 @@ using MinMadOpskrift;
 
 namespace MinMadOpskrift.Controllers
 {
+    [Route("api/Bruger")]
     public class BrugerController : Controller
     {
         private MinMadOpskriftEntities db = new MinMadOpskriftEntities();

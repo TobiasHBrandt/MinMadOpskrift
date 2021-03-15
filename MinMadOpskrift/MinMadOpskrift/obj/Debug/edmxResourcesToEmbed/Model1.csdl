@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MinMadOpskriftModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Bruger">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Brugernavn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Alder" Type="Int32" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Opskrift" Relationship="Self.Opskrift_FK" FromRole="Bruger" ToRole="Opskrift" />
+  </EntityType>
+  <EntityType Name="Opskrift">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OpskriftID" Type="Int32" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Beskrivelse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Ingredienser" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Bruger" Relationship="Self.Opskrift_FK" FromRole="Opskrift" ToRole="Bruger" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="Opskrift_FK">
+    <End Role="Bruger" Type="Self.Bruger" Multiplicity="0..1" />
+    <End Role="Opskrift" Type="Self.Opskrift" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bruger">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Opskrift">
+        <PropertyRef Name="OpskriftID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MinMadOpskriftEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Bruger" EntityType="Self.Bruger" />
+    <EntitySet Name="Opskrift" EntityType="Self.Opskrift" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="Opskrift_FK" Association="Self.Opskrift_FK">
+      <End Role="Bruger" EntitySet="Bruger" />
+      <End Role="Opskrift" EntitySet="Opskrift" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

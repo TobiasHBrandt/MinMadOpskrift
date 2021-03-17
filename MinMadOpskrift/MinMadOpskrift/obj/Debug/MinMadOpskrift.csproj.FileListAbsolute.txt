@@ -159,3 +159,5 @@ D:\Github projekt\MinMadOpskrift\MinMadOpskrift\MinMadOpskrift\bin\Microsoft.Ext
 D:\Github projekt\MinMadOpskrift\MinMadOpskrift\MinMadOpskrift\bin\System.Diagnostics.DiagnosticSource.xml
 D:\Github projekt\MinMadOpskrift\MinMadOpskrift\MinMadOpskrift\bin\System.Threading.Tasks.Extensions.xml
 D:\Github projekt\MinMadOpskrift\MinMadOpskrift\MinMadOpskrift\bin\System.Web.Http.Cors.xml
+D:\Github projekt\MinMadOpskrift\MinMadOpskrift\MinMadOpskrift\bin\Microsoft.AspNetCore.Cors.dll
+D:\Github projekt\MinMadOpskrift\MinMadOpskrift\MinMadOpskrift\bin\Microsoft.AspNetCore.Cors.xml

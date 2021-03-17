@@ -12,44 +12,45 @@ using MinMadOpskrift;
 
 namespace MinMadOpskrift.Controllers
 {
-    public class BrugerController : ApiController
+    [Route("api/Opskrift")]
+    public class OpskriftController : ApiController
     {
         private MinMadOpskriftEntities db = new MinMadOpskriftEntities();
 
-        // GET: api/Bruger
-        public IQueryable<Bruger> GetBruger()
+        // GET: api/Opskrift
+        public IQueryable<Opskrift> GetOpskrift()
         {
-            return db.Bruger;
+            return db.Opskrift;
         }
 
-        // GET: api/Bruger/5
-        [ResponseType(typeof(Bruger))]
-        public IHttpActionResult GetBruger(int id)
+        // GET: api/Opskrift/5
+        [ResponseType(typeof(Opskrift))]
+        public IHttpActionResult GetOpskrift(int id)
         {
-            Bruger bruger = db.Bruger.Find(id);
-            if (bruger == null)
+            Opskrift opskrift = db.Opskrift.Find(id);
+            if (opskrift == null)
             {
                 return NotFound();
             }
 
-            return Ok(bruger);
+            return Ok(opskrift);
         }
 
-        // PUT: api/Bruger/5
+        // PUT: api/Opskrift/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutBruger(int id, Bruger bruger)
+        public IHttpActionResult PutOpskrift(int id, Opskrift opskrift)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != bruger.ID)
+            if (id != opskrift.ID)
             {
                 return BadRequest();
             }
 
-            db.Entry(bruger).State = EntityState.Modified;
+            db.Entry(opskrift).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +58,7 @@ namespace MinMadOpskrift.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!BrugerExists(id))
+                if (!OpskriftExists(id))
                 {
                     return NotFound();
                 }
@@ -70,35 +71,35 @@ namespace MinMadOpskrift.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Bruger
-        [ResponseType(typeof(Bruger))]
-        public IHttpActionResult PostBruger(Bruger bruger)
+        // POST: api/Opskrift
+        [ResponseType(typeof(Opskrift))]
+        public IHttpActionResult PostOpskrift(Opskrift opskrift)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Bruger.Add(bruger);
+            db.Opskrift.Add(opskrift);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = bruger.ID }, bruger);
+            return CreatedAtRoute("DefaultApi", new { id = opskrift.ID }, opskrift);
         }
 
-        // DELETE: api/Bruger/5
-        [ResponseType(typeof(Bruger))]
-        public IHttpActionResult DeleteBruger(int id)
+        // DELETE: api/Opskrift/5
+        [ResponseType(typeof(Opskrift))]
+        public IHttpActionResult DeleteOpskrift(int id)
         {
-            Bruger bruger = db.Bruger.Find(id);
-            if (bruger == null)
+            Opskrift opskrift = db.Opskrift.Find(id);
+            if (opskrift == null)
             {
                 return NotFound();
             }
 
-            db.Bruger.Remove(bruger);
+            db.Opskrift.Remove(opskrift);
             db.SaveChanges();
 
-            return Ok(bruger);
+            return Ok(opskrift);
         }
 
         protected override void Dispose(bool disposing)
@@ -110,9 +111,9 @@ namespace MinMadOpskrift.Controllers
             base.Dispose(disposing);
         }
 
-        private bool BrugerExists(int id)
+        private bool OpskriftExists(int id)
         {
-            return db.Bruger.Count(e => e.ID == id) > 0;
+            return db.Opskrift.Count(e => e.ID == id) > 0;
         }
     }
 }

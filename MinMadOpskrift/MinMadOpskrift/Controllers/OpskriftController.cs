@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -80,8 +81,22 @@ namespace MinMadOpskrift.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Opskrift.Add(opskrift);
-            db.SaveChanges();
+            try
+            {
+
+                db.Opskrift.Add(opskrift);
+                db.SaveChanges();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+            }
 
             return CreatedAtRoute("DefaultApi", new { id = opskrift.ID }, opskrift);
         }

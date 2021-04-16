@@ -16,15 +16,15 @@
 
 <div *ngIf="opskrift">
     <div>
-        <p>{{opskrift.Title}}</p>
+        <input type="text" {{opskrift.Title}}>
     </div>
 
     <div>
-        <p>{{opskrift.Beskrivelse}}</p>
+        <textarea>{{opskrift.Beskrivelse}}</textarea>
     </div>
     
     <div>
-        <p>{{opskrift.Ingredienser}}</p>
+        <textarea>{{opskrift.Ingredienser}}</textarea>
     </div>
 </div>
 

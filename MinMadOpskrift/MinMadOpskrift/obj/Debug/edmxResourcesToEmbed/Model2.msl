@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MinMadOpskriftModel2StoreContainer" CdmEntityContainer="MinMadOpskriftEntities1">
+    <EntitySetMapping Name="Bruger">
+      <EntityTypeMapping TypeName="MinMadOpskriftModel2.Bruger">
+        <MappingFragment StoreEntitySet="Bruger">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Brugernavn" ColumnName="Brugernavn" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Alder" ColumnName="Alder" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Opskrift">
+      <EntityTypeMapping TypeName="MinMadOpskriftModel2.Opskrift">
+        <MappingFragment StoreEntitySet="Opskrift">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OpskriftID" ColumnName="OpskriftID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Beskrivelse" ColumnName="Beskrivelse" />
+          <ScalarProperty Name="Ingredienser" ColumnName="Ingredienser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

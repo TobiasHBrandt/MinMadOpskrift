@@ -14,18 +14,23 @@ namespace MinMadOpskrift
 
             // Web API routes
 
+            //var enableCorsAttribute = new EnableCorsAttribute("*",
+            //                               "Origin, Content-Type, Accept",
+            //                               "GET, PUT, POST, DELETE, OPTIONS");
+
             var json = config.Formatters.JsonFormatter;
             json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
             config.Formatters.Remove(config.Formatters.XmlFormatter);
 
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new System.Net.Http.Headers.MediaTypeHeaderValue("text/html"));
 
-            config.EnableCors();
+            
 
 
             config.MapHttpAttributeRoutes();
 
-            config.EnableCors(new EnableCorsAttribute("http://localhost:4200", headers: "*", methods: "*"));
+            config.EnableCors();
+            config.EnableCors(new EnableCorsAttribute("http://localhost:4200", headers: "*", methods: "GET, POST, PUT, DELETE, OPTIONS"));
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

@@ -18,13 +18,13 @@ export class OpskriftComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.getOpskrift(this.id);
+    this.id = this.route.snapshot.paramMap.get['id'];
+    this.apiService.getOpskriftById(this.id).subscribe(data => {
+      this.opskrift = data;
+    }, error => console.log(error));
   }
 
-  getOpskrift(id): void {
-    this.id = this.route.snapshot.params['id']
-    this.apiService.getOpskriftById(id).subscribe((data: Opskrift) => {
-      this.opskrift = data;
-    })
+  getOpskrift(): void {
+    
   }
 }

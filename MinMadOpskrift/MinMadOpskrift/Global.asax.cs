@@ -11,7 +11,7 @@ namespace MinMadOpskrift
 {
     public class MvcApplication : System.Web.HttpApplication
     {
-        protected void Application_Start()
+        protected void Application_Start(Object sender, EventArgs e)
         {
 
             AreaRegistration.RegisterAllAreas();

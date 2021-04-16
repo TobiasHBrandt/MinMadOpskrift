@@ -10,8 +10,11 @@ import { catchError } from "rxjs/operators";
 })
 export class ApiService {
 
-  opskriftUrl = "https://localhost:44337/api/Opskrift";
-  BrugerUrl = "https://localhost:44337/api/Bruger"
+  opskriftUrl = "https://localhost:44337/api/Opskrifts";
+  opskriftUrl2 = "https://localhost:44337/api/Opskrifts/:"
+  BrugerUrl = "https://localhost:44337/api/Brugers";
+
+  
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -26,7 +29,7 @@ export class ApiService {
   }
 
   getOpskriftById(id): Observable<any> {
-    return this.http.get(this.opskriftUrl, id)
+    return this.http.get(`${this.opskriftUrl2}/${id}`)
   }
 
   createOpskrift(data): Observable<Opskrift> {

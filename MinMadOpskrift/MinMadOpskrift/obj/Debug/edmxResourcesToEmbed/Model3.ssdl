@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MinMadOpskriftModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Bruger">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Brugernavn" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Alder" Type="int" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="60" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Opskrift">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OpskriftID" Type="int" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Beskrivelse" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Ingredienser" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="Opskrift_FK">
+    <End Role="Bruger" Type="Self.Bruger" Multiplicity="0..1" />
+    <End Role="Opskrift" Type="Self.Opskrift" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bruger">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Opskrift">
+        <PropertyRef Name="OpskriftID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MinMadOpskriftModel1StoreContainer">
+    <EntitySet Name="Bruger" EntityType="Self.Bruger" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Opskrift" EntityType="Self.Opskrift" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="Opskrift_FK" Association="Self.Opskrift_FK">
+      <End Role="Bruger" EntitySet="Bruger" />
+      <End Role="Opskrift" EntitySet="Opskrift" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

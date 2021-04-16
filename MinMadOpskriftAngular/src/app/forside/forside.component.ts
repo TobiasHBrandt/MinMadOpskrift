@@ -11,12 +11,12 @@ import { Opskrift } from '../opskrift';
 export class ForsideComponent implements OnInit {
 
   opskrifts: [];
-
+  id: number;
   constructor(private apiService: ApiService, private router: Router) { }
 
   ngOnInit(): void {
     this.getAllOpskrift();
-    
+    this.opskriftId(this.id);
   }
 
   getAllOpskrift(): void {
@@ -28,6 +28,9 @@ export class ForsideComponent implements OnInit {
     this.apiService.deleteAllOpskrift().subscribe(() => {
       this.getAllOpskrift();
     })
+  }
+  opskriftId(id: number){
+    this.router.navigate(['/opskrift', id]);
   }
 
 }
